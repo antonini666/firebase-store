@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  padding: 30px 0;
+}
+
+.user__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.user-name {
+  margin: 0;
+}
+
+.user-img img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.product-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card {
+  width: 230px;
+  margin: 10px;
+}
+
+.btn-wrap {
+  display: flex;
+}
+.btn-wrap .btn {
+  flex: 1;
+  margin: 5px;
+}

@@ -26,6 +26,12 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.card-img {
+  height: 140px;
+  object-fit: contain;
+}
+
 .card {
   width: 230px;
   margin: 10px;

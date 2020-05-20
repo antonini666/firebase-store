@@ -2,13 +2,14 @@ import React from "react";
 import app from "../../firebase";
 import { Link } from "react-router-dom";
 
-import img from "../../apple.jpg";
 import "./Products.css";
 
 const Products = ({ data, user, database }) => {
   const deleteItem = (e) => {
     database.ref().child(e.target.dataset.id).set(null);
   };
+
+  console.log(data);
 
   return (
     <div className="products">
@@ -35,7 +36,12 @@ const Products = ({ data, user, database }) => {
           {data
             ? Object.values(data).map((item, index) => (
                 <div className="card" key={item.id}>
-                  <img src={img} alt="" width="100%" />
+                  <img
+                    src={item.img}
+                    alt=""
+                    width="100%"
+                    className="card-img"
+                  />
                   <div className="card-body">
                     <h5 className="card-title">{item.title}</h5>
                     <p className="card-text">{item.description}</p>

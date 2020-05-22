@@ -8,9 +8,14 @@ const Login = ({ loggedIn }) => {
   }
 
   return (
-    <button onClick={() => auth.signInWithPopup(googleAuthProvider)}>
-      Sign in
-    </button>
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <button
+        className="btn btn-success"
+        onClick={() => auth.signInWithPopup(googleAuthProvider)}
+      >
+        Sign in
+      </button>
+    </div>
   );
 };
 

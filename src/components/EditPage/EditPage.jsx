@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { database, storage } from "../../firebase";
+import { storage, database } from "../../firebase";
 import NewProduct from "../NewProductClass";
 import ItemForm from "../ItemForm";
 
-const AddPage = () => {
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [desc, setDesc] = useState("");
-  const [img, setImg] = useState("");
+const EditPage = ({ data, id }) => {
+  const [title, setTitle] = useState(data.title);
+  const [price, setPrice] = useState(data.price);
+  const [desc, setDesc] = useState(data.description);
+  const [img, setImg] = useState(data.img);
   const [loadImg, setLoadImg] = useState(true);
 
   const handleChange = (e) => {
@@ -34,8 +34,6 @@ const AddPage = () => {
               .child(fileUrl)
               .getDownloadURL()
               .then((url) => {
-                console.log(url);
-
                 setImg(url);
               });
           }
@@ -56,11 +54,10 @@ const AddPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    database.ref().push(new NewProduct(title, img, desc, price, Date.now()));
-    setTitle("");
-    setImg("");
-    setPrice("");
-    setDesc("");
+    database
+      .ref()
+      .child(id)
+      .set(new NewProduct(title, img, desc, price, data.id));
   };
 
   return (
@@ -72,9 +69,9 @@ const AddPage = () => {
       desc={desc}
       price={price}
       loadImg={loadImg}
-      required={true}
+      required={false}
     />
   );
 };
 
-export default AddPage;
+export default EditPage;
